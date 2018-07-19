@@ -1,0 +1,7 @@
+<div class="topbar"><button class="done-btn" (click)="onDoneClick()">Done</button></div>
+<div class="drums">
+  <ngx-chrono-select-drum [items]="dates" [selectedItem]="selectedDate" (select)="onSelectDate($event)"></ngx-chrono-select-drum>
+  <ngx-chrono-select-drum [items]="hours" [selectedItem]="selectedHour" (select)="onSelectHour($event)"></ngx-chrono-select-drum>
+  <ngx-chrono-select-drum [items]="meridiems" [selectedItem]="selectedMeridiem" (select)="onSelectMeridiem($event)"></ngx-chrono-select-drum>
+</div>
+<div class="reticle"></div>

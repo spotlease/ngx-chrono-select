@@ -1,0 +1,8 @@
+<div class="wrapper" (panstart)="onPanStart($event)" (panend)="onPanEnd($event)" (panmove)="onPanMove($event)" #wrapper>
+  <div class="shadow"></div>
+  <div class="list" [style.transform]="getTransform()" #list>
+    <div class="item"></div>
+    <div class="item" [ngClass]="{'selected': selectedIndex === i }" *ngFor="let item of items; index as i">{{item.toString()}}</div>
+    <div class="item"></div>
+  </div>
+</div>

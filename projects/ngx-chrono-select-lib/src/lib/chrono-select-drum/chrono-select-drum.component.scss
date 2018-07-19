@@ -1,0 +1,32 @@
+.wrapper {
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+  height: 160px;
+}
+
+.shadow {
+  box-shadow: inset 0px 0px 20px 20px #fff;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.list {
+  padding: 20px 40px;
+}
+
+.item {
+  font-size: 18px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.selected {
+  font-weight: bold;
+}

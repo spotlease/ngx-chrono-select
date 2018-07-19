@@ -4,13 +4,13 @@
         "directive-selector": [
             true,
             "attribute",
-            "lib",
+            "ngxChronoSelect",
             "camelCase"
         ],
         "component-selector": [
             true,
             "element",
-            "lib",
+            "ngx-chrono-select",
             "kebab-case"
         ]
     }

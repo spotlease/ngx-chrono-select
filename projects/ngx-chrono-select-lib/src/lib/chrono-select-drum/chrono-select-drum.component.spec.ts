@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NgxChronoSelectLibComponent } from './ngx-chrono-select-lib.component';
+import { ChronoSelectDrumComponent } from './chrono-select-drum.component';
 
-describe('NgxChronoSelectLibComponent', () => {
-  let component: NgxChronoSelectLibComponent;
-  let fixture: ComponentFixture<NgxChronoSelectLibComponent>;
+describe('ChronoSelectDrumComponent', () => {
+  let component: ChronoSelectDrumComponent;
+  let fixture: ComponentFixture<ChronoSelectDrumComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NgxChronoSelectLibComponent ]
+      declarations: [ ChronoSelectDrumComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgxChronoSelectLibComponent);
+    fixture = TestBed.createComponent(ChronoSelectDrumComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
