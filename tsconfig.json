@@ -15,6 +15,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-chrono-select-lib": [
+        "dist/ngx-chrono-select-lib"
+      ],
+      "ngx-chrono-select-lib/*": [
+        "dist/ngx-chrono-select-lib/*"
+      ]
+    }
   }
 }
