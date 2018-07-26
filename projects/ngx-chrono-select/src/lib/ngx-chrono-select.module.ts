@@ -7,29 +7,29 @@ import {
 import { OverlayModule } from '@angular/cdk/overlay';
 import 'hammerjs';
 
-import { ChronoSelectTriggerDirective } from './chrono-select-trigger/chrono-select-trigger.directive';
-import { ChronoSelectComponent } from './chrono-select/chrono-select.component';
-import { ChronoSelectInputDirective } from './chrono-select-input/chrono-select-input.directive';
-import { ChronoSelectOverlayComponent } from './chrono-select-overlay/chrono-select-overlay.component';
-import { ChronoSelectDrumComponent } from './chrono-select-drum/chrono-select-drum.component';
-import { ChronoSelectHammerGestureConfig } from './hammer-config';
+import { NgxChronoSelectTriggerDirective } from './trigger/trigger.directive';
+import { NgxChronoSelectComponent } from './select/select.component';
+import { NgxChronoSelectInputDirective } from './input/input.directive';
+import { NgxChronoSelectOverlayComponent } from './overlay/overlay.component';
+import { NgxChronoSelectDrumComponent } from './drum/drum.component';
+import { NgxChronoSelectHammerGestureConfig } from './hammer-config';
 
 @NgModule({
   imports: [BrowserModule, OverlayModule],
   declarations: [
-    ChronoSelectTriggerDirective,
-    ChronoSelectComponent,
-    ChronoSelectInputDirective,
-    ChronoSelectOverlayComponent,
-    ChronoSelectDrumComponent
+    NgxChronoSelectTriggerDirective,
+    NgxChronoSelectComponent,
+    NgxChronoSelectInputDirective,
+    NgxChronoSelectOverlayComponent,
+    NgxChronoSelectDrumComponent
   ],
-  entryComponents: [ChronoSelectOverlayComponent],
+  entryComponents: [NgxChronoSelectOverlayComponent],
   providers: [
     {
       provide: HAMMER_GESTURE_CONFIG,
-      useClass: ChronoSelectHammerGestureConfig
+      useClass: NgxChronoSelectHammerGestureConfig
     }
   ],
-  exports: [ChronoSelectComponent, ChronoSelectInputDirective, ChronoSelectTriggerDirective]
+  exports: [NgxChronoSelectComponent, NgxChronoSelectInputDirective, NgxChronoSelectTriggerDirective]
 })
 export class NgxChronoSelectModule {}

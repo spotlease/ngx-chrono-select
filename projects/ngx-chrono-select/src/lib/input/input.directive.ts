@@ -1,13 +1,13 @@
 import { Directive, Input, ElementRef, OnInit, OnDestroy, HostListener } from '@angular/core';
 
-import { ChronoSelectComponent } from '../chrono-select/chrono-select.component';
+import { NgxChronoSelectComponent } from '../select/select.component';
 import { Subscription } from 'rxjs';
 
 @Directive({
   selector: 'input[ngxChronoSelect]'
 })
-export class ChronoSelectInputDirective implements OnInit, OnDestroy {
-  @Input() ngxChronoSelect: ChronoSelectComponent;
+export class NgxChronoSelectInputDirective implements OnInit, OnDestroy {
+  @Input() ngxChronoSelect: NgxChronoSelectComponent;
 
   private subscription: Subscription;
 

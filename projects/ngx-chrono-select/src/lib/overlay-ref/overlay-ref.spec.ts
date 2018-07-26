@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ChronoSelectOverlayRef } from './chrono-select-overlay-ref';
+import { NgxChronoSelectOverlayRef } from './overlay-ref';
 
 describe('ChronoSelectOverlayRef', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ChronoSelectOverlayRef]
+      providers: [NgxChronoSelectOverlayRef]
     });
   });
 
-  it('should be created', inject([ChronoSelectOverlayRef], (service: ChronoSelectOverlayRef) => {
+  it('should be created', inject([NgxChronoSelectOverlayRef], (service: NgxChronoSelectOverlayRef) => {
     expect(service).toBeTruthy();
   }));
 });

@@ -4,14 +4,14 @@ import {
   HostListener
 } from '@angular/core';
 
-import { ChronoSelectComponent } from '../chrono-select/chrono-select.component';
+import { NgxChronoSelectComponent } from '../select/select.component';
 
 @Directive({
   selector: '[ngxChronoSelectTrigger]'
 })
-export class ChronoSelectTriggerDirective {
+export class NgxChronoSelectTriggerDirective {
 
-  @Input() ngxChronoSelectTrigger: ChronoSelectComponent;
+  @Input() ngxChronoSelectTrigger: NgxChronoSelectComponent;
 
 
   @HostListener('click')

@@ -10,10 +10,10 @@ import {
 
 @Component({
   selector: 'ngx-chrono-select-drum',
-  templateUrl: './chrono-select-drum.component.html',
-  styleUrls: ['./chrono-select-drum.component.scss']
+  templateUrl: './drum.component.html',
+  styleUrls: ['./drum.component.scss']
 })
-export class ChronoSelectDrumComponent implements OnInit, AfterViewChecked {
+export class NgxChronoSelectDrumComponent implements OnInit, AfterViewChecked {
   @ViewChild('wrapper') wrapper;
   @ViewChild('list') list;
 

@@ -2,7 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { OverlayRef } from '@angular/cdk/overlay';
 
 @Injectable()
-export class ChronoSelectOverlayRef {
+export class NgxChronoSelectOverlayRef {
   afterClose: EventEmitter<Date>;
 
   initialDate = new Date();

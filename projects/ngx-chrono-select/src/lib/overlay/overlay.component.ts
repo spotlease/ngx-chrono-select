@@ -2,17 +2,17 @@ import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/cor
 import * as moment_ from 'moment';
 import { Moment } from 'moment';
 
-import { ChronoSelectOverlayRef } from '../chrono-select-overlay-ref/chrono-select-overlay-ref';
-import { ChronoDate, ChronoString } from '../chrono-select-containers';
+import { NgxChronoSelectOverlayRef } from '../overlay-ref/overlay-ref';
+import { ChronoDate, ChronoString } from '../containers';
 
 const moment = moment_;
 
 @Component({
   selector: 'ngx-chrono-select-overlay',
-  templateUrl: './chrono-select-overlay.component.html',
-  styleUrls: ['./chrono-select-overlay.component.scss']
+  templateUrl: './overlay.component.html',
+  styleUrls: ['./overlay.component.scss']
 })
-export class ChronoSelectOverlayComponent implements OnDestroy {
+export class NgxChronoSelectOverlayComponent implements OnDestroy {
   dateFormat = 'ddd MMM D';
   hourFormat = 'h';
   meridiemFormat = 'A';
@@ -27,7 +27,7 @@ export class ChronoSelectOverlayComponent implements OnDestroy {
   hours: ChronoString[];
   meridiems: ChronoString[];
 
-  constructor(private chronoSelectOverlayRef: ChronoSelectOverlayRef) {
+  constructor(private chronoSelectOverlayRef: NgxChronoSelectOverlayRef) {
 
     this.selectedMoment = moment(chronoSelectOverlayRef.initialDate);
 

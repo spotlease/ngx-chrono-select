@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ChronoSelectOverlayComponent } from './chrono-select-overlay.component';
+import { NgxChronoSelectOverlayComponent } from './overlay.component';
 
 describe('ChronoSelectOverlayComponent', () => {
-  let component: ChronoSelectOverlayComponent;
+  let component: NgxChronoSelectOverlayComponent;
   let fixture: ComponentFixture<ChronoSelectOverlayComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ChronoSelectOverlayComponent ]
+      declarations: [ NgxChronoSelectOverlayComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ChronoSelectOverlayComponent);
+    fixture = TestBed.createComponent(NgxChronoSelectOverlayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
