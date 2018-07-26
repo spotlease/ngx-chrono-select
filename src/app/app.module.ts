@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { NgxChronoSelectLibModule } from 'ngx-chrono-select-lib';
+import { NgxChronoSelectModule } from 'ngx-chrono-select-lib';
 
 import { AppComponent } from './app.component';
 
@@ -11,7 +11,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    NgxChronoSelectLibModule
+    NgxChronoSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

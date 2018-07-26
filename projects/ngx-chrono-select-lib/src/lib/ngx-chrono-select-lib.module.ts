@@ -34,4 +34,4 @@ class LibHammerGestureConfig extends HammerGestureConfig {
   ],
   exports: [ChronoSelectTriggerDirective, ChronoSelectComponent, ChronoSelectInputDirective]
 })
-export class NgxChronoSelectLibModule {}
+export class NgxChronoSelectModule {}
