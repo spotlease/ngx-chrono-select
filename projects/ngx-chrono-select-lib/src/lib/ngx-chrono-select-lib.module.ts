@@ -29,6 +29,7 @@ import { ChronoSelectHammerGestureConfig } from './hammer-config';
       provide: HAMMER_GESTURE_CONFIG,
       useClass: ChronoSelectHammerGestureConfig
     }
-  ]
+  ],
+  exports: [ChronoSelectComponent, ChronoSelectInputDirective, ChronoSelectTriggerDirective]
 })
 export class NgxChronoSelectModule {}
