@@ -3,50 +3,31 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-chrono-select": {
-      "root": "",
-      "sourceRoot": "src",
+    "ngx-chrono-select-demo": {
+      "root": "projects/ngx-chrono-select-demo/",
+      "sourceRoot": "projects/ngx-chrono-select-demo/src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {
         "@schematics/angular:component": {
-          "styleext": "scss",
-          "spec": false
-        },
-        "@schematics/angular:class": {
-          "spec": false
-        },
-        "@schematics/angular:directive": {
-          "spec": false
-        },
-        "@schematics/angular:guard": {
-          "spec": false
-        },
-        "@schematics/angular:module": {
-          "spec": false
-        },
-        "@schematics/angular:pipe": {
-          "spec": false
-        },
-        "@schematics/angular:service": {
-          "spec": false
+          "styleext": "scss"
         }
       },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngx-chrono-select",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
+            "outputPath": "dist/ngx-chrono-select-demo",
+            "index": "projects/ngx-chrono-select-demo/src/index.html",
+            "main": "projects/ngx-chrono-select-demo/src/main.ts",
+            "polyfills": "projects/ngx-chrono-select-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-chrono-select-demo/tsconfig.app.json",
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/ngx-chrono-select-demo/src/favicon.ico",
+              "projects/ngx-chrono-select-demo/src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "projects/ngx-chrono-select-demo/src/styles.scss"
             ],
             "scripts": []
           },
@@ -54,8 +35,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "projects/ngx-chrono-select-demo/src/environments/environment.ts",
+                  "with": "projects/ngx-chrono-select-demo/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -73,34 +54,34 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-chrono-select:build"
+            "browserTarget": "ngx-chrono-select-demo:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-chrono-select:build:production"
+              "browserTarget": "ngx-chrono-select-demo:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-chrono-select:build"
+            "browserTarget": "ngx-chrono-select-demo:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
+            "main": "projects/ngx-chrono-select-demo/src/test.ts",
+            "polyfills": "projects/ngx-chrono-select-demo/src/polyfills.ts",
+            "tsConfig": "projects/ngx-chrono-select-demo/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-chrono-select-demo/karma.conf.js",
             "styles": [
-              "src/styles.scss"
+              "projects/ngx-chrono-select-demo/src/styles.scss"
             ],
             "scripts": [],
             "assets": [
-              "src/favicon.ico",
-              "src/assets"
+              "projects/ngx-chrono-select-demo/src/favicon.ico",
+              "projects/ngx-chrono-select-demo/src/assets"
             ]
           }
         },
@@ -108,8 +89,8 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "src/tsconfig.app.json",
-              "src/tsconfig.spec.json"
+              "projects/ngx-chrono-select-demo/tsconfig.app.json",
+              "projects/ngx-chrono-select-demo/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -118,26 +99,26 @@
         }
       }
     },
-    "ngx-chrono-select-e2e": {
-      "root": "e2e/",
+    "ngx-chrono-select-demo-e2e": {
+      "root": "projects/ngx-chrono-select-demo-e2e/",
       "projectType": "application",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngx-chrono-select:serve"
+            "protractorConfig": "projects/ngx-chrono-select-demo-e2e/protractor.conf.js",
+            "devServerTarget": "ngx-chrono-select-demo:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngx-chrono-select:serve:production"
+              "devServerTarget": "ngx-chrono-select-demo:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
+            "tsConfig": "projects/ngx-chrono-select-demo-e2e/tsconfig.e2e.json",
             "exclude": [
               "**/node_modules/**"
             ]
@@ -145,38 +126,38 @@
         }
       }
     },
-    "ngx-chrono-select-lib": {
-      "root": "projects/ngx-chrono-select-lib",
-      "sourceRoot": "projects/ngx-chrono-select-lib/src",
+    "ngx-chrono-select": {
+      "root": "projects/ngx-chrono-select",
+      "sourceRoot": "projects/ngx-chrono-select/src",
       "projectType": "library",
-      "prefix": "ngx",
+      "prefix": "ngx-chrono-select",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "projects/ngx-chrono-select-lib/tsconfig.lib.json",
-            "project": "projects/ngx-chrono-select-lib/ng-package.json"
+            "tsConfig": "projects/ngx-chrono-select/tsconfig.lib.json",
+            "project": "projects/ngx-chrono-select/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "projects/ngx-chrono-select-lib/ng-package.prod.json"
+              "project": "projects/ngx-chrono-select/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-chrono-select-lib/src/test.ts",
-            "tsConfig": "projects/ngx-chrono-select-lib/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-chrono-select-lib/karma.conf.js"
+            "main": "projects/ngx-chrono-select/src/test.ts",
+            "tsConfig": "projects/ngx-chrono-select/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-chrono-select/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/ngx-chrono-select-lib/tsconfig.lib.json",
-              "projects/ngx-chrono-select-lib/tsconfig.spec.json"
+              "projects/ngx-chrono-select/tsconfig.lib.json",
+              "projects/ngx-chrono-select/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -186,5 +167,5 @@
       }
     }
   },
-  "defaultProject": "ngx-chrono-select"
+  "defaultProject": "ngx-chrono-select-demo"
 }

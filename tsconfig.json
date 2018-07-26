@@ -17,8 +17,8 @@
       "dom"
     ],
     "paths": {
-      "ngx-chrono-select-lib": [
-        "projects/ngx-chrono-select-lib/src/public_api"
+      "ngx-chrono-select": [
+        "projects/ngx-chrono-select/src/public_api"
       ]
     }
   }
