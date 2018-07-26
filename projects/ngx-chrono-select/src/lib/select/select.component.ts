@@ -7,8 +7,7 @@ import { NgxChronoSelectOverlayRef } from '../overlay-ref/overlay-ref';
 
 @Component({
   selector: 'ngx-chrono-select',
-  templateUrl: './select.component.html',
-  styleUrls: ['./select.component.scss']
+  template: ''
 })
 export class NgxChronoSelectComponent {
 
@@ -26,7 +25,7 @@ export class NgxChronoSelectComponent {
 
     const overlayConfig = new OverlayConfig({
       hasBackdrop: true,
-      backdropClass: 'dark-backdrop',
+      backdropClass: 'ngx-chrono-select-overlay-backdrop',
       panelClass: 'ngx-chrono-select-overlay-panel',
       scrollStrategy: this.overlay.scrollStrategies.block(),
       positionStrategy

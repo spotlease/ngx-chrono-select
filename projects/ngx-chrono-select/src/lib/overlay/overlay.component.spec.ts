@@ -4,7 +4,7 @@ import { NgxChronoSelectOverlayComponent } from './overlay.component';
 
 describe('ChronoSelectOverlayComponent', () => {
   let component: NgxChronoSelectOverlayComponent;
-  let fixture: ComponentFixture<ChronoSelectOverlayComponent>;
+  let fixture: ComponentFixture<NgxChronoSelectOverlayComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

@@ -4,7 +4,7 @@ import { NgxChronoSelectDrumComponent } from './drum.component';
 
 describe('ChronoSelectDrumComponent', () => {
   let component: NgxChronoSelectDrumComponent;
-  let fixture: ComponentFixture<ChronoSelectDrumComponent>;
+  let fixture: ComponentFixture<NgxChronoSelectDrumComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({

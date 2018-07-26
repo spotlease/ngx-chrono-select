@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 
+import 'hammerjs';
 import {
   BrowserModule,
   HAMMER_GESTURE_CONFIG
 } from '@angular/platform-browser';
 import { OverlayModule } from '@angular/cdk/overlay';
-import 'hammerjs';
 
 import { NgxChronoSelectTriggerDirective } from './trigger/trigger.directive';
 import { NgxChronoSelectComponent } from './select/select.component';

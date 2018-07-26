@@ -4,7 +4,7 @@ import { NgxChronoSelectComponent } from './select.component';
 
 describe('ChronoSelectComponent', () => {
   let component: NgxChronoSelectComponent;
-  let fixture: ComponentFixture<ChronoSelectComponent>;
+  let fixture: ComponentFixture<NgxChronoSelectComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
