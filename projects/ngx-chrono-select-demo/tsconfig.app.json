@@ -8,5 +8,10 @@
   "exclude": [
     "src/test.ts",
     "**/*.spec.ts"
-  ]
+  ],
+  "paths": {
+    "ngx-chrono-select": [
+      "projects/ngx-chrono-select/src/public_api"
+    ]
+  }
 }

@@ -1,0 +1,17 @@
+{
+  "extends": "../../tslint.json",
+  "rules": {
+      "directive-selector": [
+          true,
+          "attribute",
+          "ngxChronoSelect",
+          "camelCase"
+      ],
+      "component-selector": [
+          true,
+          "element",
+          "ngx-chrono-select",
+          "kebab-case"
+      ]
+  }
+}
