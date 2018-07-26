@@ -1,9 +1,11 @@
 import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
 import { Moment } from 'moment';
 
 import { ChronoSelectOverlayRef } from '../chrono-select-overlay-ref/chrono-select-overlay-ref';
 import { ChronoDate, ChronoString } from '../chrono-select-containers';
+
+const moment = moment_;
 
 @Component({
   selector: 'ngx-chrono-select-overlay',

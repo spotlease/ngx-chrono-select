@@ -1,6 +1,6 @@
 import { Component, Injector, Output, EventEmitter } from '@angular/core';
 
-import { Overlay, OverlayConfig } from '@angular/cdk/overlay';
+import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
 import { ChronoSelectOverlayComponent } from '../chrono-select-overlay/chrono-select-overlay.component';
 import { ChronoSelectOverlayRef } from '../chrono-select-overlay-ref/chrono-select-overlay-ref';
@@ -35,9 +35,10 @@ export class ChronoSelectComponent {
     // Returns an OverlayRef (which is a PortalHost)
     const overlayRef = this.overlay.create(overlayConfig);
 
-    const chronoSelectOverlayRef = new ChronoSelectOverlayRef(overlayRef, initialDate || this.selectedDate);
+    const chronoSelectOverlayRef = new ChronoSelectOverlayRef(overlayRef);
+    chronoSelectOverlayRef.initialDate = initialDate || this.selectedDate;
 
-    const injector = this.createInjector(chronoSelectOverlayRef);
+    const injector = this.createInjector(overlayRef, chronoSelectOverlayRef);
 
     // Create ComponentPortal that can be attached to a PortalHost
     const chronoSelectPortal = new ComponentPortal(ChronoSelectOverlayComponent, null, injector);
@@ -53,9 +54,10 @@ export class ChronoSelectComponent {
     });
   }
 
-  private createInjector(chronoSelectOverlayRef: ChronoSelectOverlayRef): PortalInjector {
+  private createInjector(overlayRef: OverlayRef, chronoSelectOverlayRef: ChronoSelectOverlayRef): PortalInjector {
     const injectionTokens = new WeakMap();
 
+    injectionTokens.set(OverlayRef, overlayRef);
     injectionTokens.set(ChronoSelectOverlayRef, chronoSelectOverlayRef);
 
     return new PortalInjector(this.injector, injectionTokens);

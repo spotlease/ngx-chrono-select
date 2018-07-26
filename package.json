@@ -1,13 +1,15 @@
 {
   "name": "ngx-chrono-select",
   "version": "0.0.0",
+  "module": "./dist/ngx-chrono-select-lib/fesm2015/ngx-chrono-select-lib.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "postinstall": "ng build ngx-chrono-select-lib"
   },
   "private": true,
   "dependencies": {

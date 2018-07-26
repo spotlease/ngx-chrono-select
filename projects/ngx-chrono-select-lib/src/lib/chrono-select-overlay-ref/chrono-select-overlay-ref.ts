@@ -5,7 +5,9 @@ import { OverlayRef } from '@angular/cdk/overlay';
 export class ChronoSelectOverlayRef {
   afterClose: EventEmitter<Date>;
 
-  constructor(private overlayRef: OverlayRef, public initialDate: Date) {
+  initialDate = new Date();
+
+  constructor(private overlayRef: OverlayRef) {
     this.afterClose = new EventEmitter();
   }
 

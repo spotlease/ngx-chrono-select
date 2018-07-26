@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 
-import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import {
+  BrowserModule,
+  HAMMER_GESTURE_CONFIG
+} from '@angular/platform-browser';
 import { OverlayModule } from '@angular/cdk/overlay';
 import 'hammerjs';
 
@@ -9,12 +12,7 @@ import { ChronoSelectComponent } from './chrono-select/chrono-select.component';
 import { ChronoSelectInputDirective } from './chrono-select-input/chrono-select-input.directive';
 import { ChronoSelectOverlayComponent } from './chrono-select-overlay/chrono-select-overlay.component';
 import { ChronoSelectDrumComponent } from './chrono-select-drum/chrono-select-drum.component';
-
-class LibHammerGestureConfig extends HammerGestureConfig {
-  overrides = <any> {
-    pan: { direction: Hammer.DIRECTION_ALL }
-  }
-}
+import { ChronoSelectHammerGestureConfig } from './hammer-config';
 
 @NgModule({
   imports: [BrowserModule, OverlayModule],
@@ -29,9 +27,8 @@ class LibHammerGestureConfig extends HammerGestureConfig {
   providers: [
     {
       provide: HAMMER_GESTURE_CONFIG,
-      useClass: LibHammerGestureConfig
+      useClass: ChronoSelectHammerGestureConfig
     }
-  ],
-  exports: [ChronoSelectTriggerDirective, ChronoSelectComponent, ChronoSelectInputDirective]
+  ]
 })
 export class NgxChronoSelectModule {}

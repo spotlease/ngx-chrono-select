@@ -18,9 +18,6 @@
     ],
     "paths": {
       "ngx-chrono-select": [
-        "dist/ngx-chrono-select-lib"
-      ],
-      "ngx-chrono-select-lib": [
         "projects/ngx-chrono-select-lib/src/public_api"
       ]
     }
