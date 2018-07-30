@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 
 import 'hammerjs';
-import {
-  BrowserModule,
-  HAMMER_GESTURE_CONFIG
-} from '@angular/platform-browser';
+import { BrowserModule, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { OverlayModule } from '@angular/cdk/overlay';
 
 import { NgxChronoSelectTriggerDirective } from './trigger/trigger.directive';
@@ -30,6 +27,10 @@ import { NgxChronoSelectHammerGestureConfig } from './hammer-config';
       useClass: NgxChronoSelectHammerGestureConfig
     }
   ],
-  exports: [NgxChronoSelectComponent, NgxChronoSelectInputDirective, NgxChronoSelectTriggerDirective]
+  exports: [
+    NgxChronoSelectComponent,
+    NgxChronoSelectInputDirective,
+    NgxChronoSelectTriggerDirective
+  ]
 })
 export class NgxChronoSelectModule {}

@@ -11,8 +11,7 @@ export class NgxChronoSelectInputDirective implements OnInit, OnDestroy {
 
   private subscription: Subscription;
 
-  constructor(private el: ElementRef) {
-  }
+  constructor(private el: ElementRef) {}
 
   @HostListener('focus')
   onFocus() {

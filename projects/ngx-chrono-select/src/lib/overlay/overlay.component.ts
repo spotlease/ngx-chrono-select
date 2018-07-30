@@ -28,7 +28,6 @@ export class NgxChronoSelectOverlayComponent implements OnDestroy {
   meridiems: ChronoString[];
 
   constructor(private chronoSelectOverlayRef: NgxChronoSelectOverlayRef) {
-
     this.selectedMoment = moment(chronoSelectOverlayRef.initialDate);
 
     this.updateComponents();

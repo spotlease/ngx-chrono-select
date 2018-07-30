@@ -1,19 +1,31 @@
-import { Component, Injector, Output, EventEmitter } from '@angular/core';
-
+import { Component, Injector, Output, EventEmitter, forwardRef } from '@angular/core';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
+
 import { NgxChronoSelectOverlayComponent } from '../overlay/overlay.component';
 import { NgxChronoSelectOverlayRef } from '../overlay-ref/overlay-ref';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'ngx-chrono-select',
-  template: ''
+  template: '',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => NgxChronoSelectComponent),
+      multi: true
+    }
+  ]
 })
-export class NgxChronoSelectComponent {
-
+export class NgxChronoSelectComponent implements ControlValueAccessor {
   @Output() select = new EventEmitter<Date>();
 
   selectedDate = new Date();
+
+  private afterCloseSubscription: Subscription;
+
+  private cvaOnChangeFn: any;
 
   constructor(private overlay: Overlay, private injector: Injector) {}
 
@@ -47,13 +59,34 @@ export class NgxChronoSelectComponent {
 
     overlayRef.backdropClick().subscribe(_ => overlayRef.dispose());
 
-    chronoSelectOverlayRef.afterClose.subscribe((selectedDate) => {
+    if (this.afterCloseSubscription) {
+      this.afterCloseSubscription.unsubscribe();
+    }
+
+    this.afterCloseSubscription = chronoSelectOverlayRef.afterClose.subscribe(selectedDate => {
+      if (this.cvaOnChangeFn && selectedDate !== this.selectedDate) {
+        this.cvaOnChangeFn(selectedDate);
+      }
       this.selectedDate = selectedDate;
       this.select.emit(selectedDate);
     });
   }
 
-  private createInjector(overlayRef: OverlayRef, chronoSelectOverlayRef: NgxChronoSelectOverlayRef): PortalInjector {
+  writeValue(value: any) {
+    if (!value) {
+      return;
+    }
+    this.selectedDate = value;
+  }
+  registerOnChange(fn: any) {
+    this.cvaOnChangeFn = fn;
+  }
+  registerOnTouched(fn: any) {}
+
+  private createInjector(
+    overlayRef: OverlayRef,
+    chronoSelectOverlayRef: NgxChronoSelectOverlayRef
+  ): PortalInjector {
     const injectionTokens = new WeakMap();
 
     injectionTokens.set(OverlayRef, overlayRef);

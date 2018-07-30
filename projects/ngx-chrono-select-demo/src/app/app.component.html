@@ -1,9 +1,19 @@
-<label>
-  Date Time:
-  <input [ngxChronoSelect]="chronoSelect1">
-</label>
-<ngx-chrono-select #chronoSelect1></ngx-chrono-select>
+<div class="example">
+  <label>
+    Date Time:
+    <input [ngxChronoSelect]="chronoSelect1" readonly>
+  </label>
+  <ngx-chrono-select #chronoSelect1></ngx-chrono-select>
+</div>
 
-<button [ngxChronoSelectTrigger]="chronoSelect2">Select Date</button>
+<div class="example">
+  <div>{{chronoSelect2.selectedDate}}</div>
+  <button [ngxChronoSelectTrigger]="chronoSelect2">Select Date</button>
+  <ngx-chrono-select #chronoSelect2></ngx-chrono-select>
+</div>
 
-<ngx-chrono-select #chronoSelect2></ngx-chrono-select>
+<div class="example">
+  <div>{{chronoSelect3NgModel.value}}</div>
+  <button [ngxChronoSelectTrigger]="chronoSelect3">Select Date</button>
+  <ngx-chrono-select #chronoSelect3 name="chronoSelect3Value" ngModel #chronoSelect3NgModel="ngModel"></ngx-chrono-select>
+</div>
