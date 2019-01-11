@@ -3,6 +3,41 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "ngx-chrono-select": {
+      "root": "projects/ngx-chrono-select",
+      "sourceRoot": "projects/ngx-chrono-select/src",
+      "projectType": "library",
+      "prefix": "ngx-chrono-select",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ngx-chrono-select/tsconfig.lib.json",
+            "project": "projects/ngx-chrono-select/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ngx-chrono-select/src/test.ts",
+            "tsConfig": "projects/ngx-chrono-select/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-chrono-select/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ngx-chrono-select/tsconfig.lib.json",
+              "projects/ngx-chrono-select/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
     "ngx-chrono-select-demo": {
       "root": "projects/ngx-chrono-select-demo/",
       "sourceRoot": "projects/ngx-chrono-select-demo/src",
@@ -47,7 +82,14 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
             }
           }
         },
@@ -91,73 +133,6 @@
             "tsConfig": [
               "projects/ngx-chrono-select-demo/tsconfig.app.json",
               "projects/ngx-chrono-select-demo/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "ngx-chrono-select-demo-e2e": {
-      "root": "projects/ngx-chrono-select-demo-e2e/",
-      "projectType": "application",
-      "architect": {
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "projects/ngx-chrono-select-demo-e2e/protractor.conf.js",
-            "devServerTarget": "ngx-chrono-select-demo:serve"
-          },
-          "configurations": {
-            "production": {
-              "devServerTarget": "ngx-chrono-select-demo:serve:production"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "projects/ngx-chrono-select-demo-e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
-    "ngx-chrono-select": {
-      "root": "projects/ngx-chrono-select",
-      "sourceRoot": "projects/ngx-chrono-select/src",
-      "projectType": "library",
-      "prefix": "ngx-chrono-select",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "projects/ngx-chrono-select/tsconfig.lib.json",
-            "project": "projects/ngx-chrono-select/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "projects/ngx-chrono-select/ng-package.prod.json"
-            }
-          }
-        },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "projects/ngx-chrono-select/src/test.ts",
-            "tsConfig": "projects/ngx-chrono-select/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-chrono-select/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "projects/ngx-chrono-select/tsconfig.lib.json",
-              "projects/ngx-chrono-select/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
