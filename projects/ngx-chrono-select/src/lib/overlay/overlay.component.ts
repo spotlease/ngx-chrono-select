@@ -17,6 +17,7 @@ export class NgxChronoSelectOverlayComponent implements OnDestroy {
   hourFormat = 'h';
   meridiemFormat = 'A';
 
+  minMoment: Moment;
   selectedMoment: Moment;
 
   selectedDate: ChronoDate;
@@ -29,21 +30,20 @@ export class NgxChronoSelectOverlayComponent implements OnDestroy {
 
   constructor(private chronoSelectOverlayRef: NgxChronoSelectOverlayRef) {
     this.selectedMoment = moment(chronoSelectOverlayRef.initialDate);
+    if(chronoSelectOverlayRef.minDate) {
+      this.minMoment = moment(chronoSelectOverlayRef.minDate);
+      if(this.minMoment > this.selectedMoment) {
+        this.selectedMoment = this.minMoment.clone();
+      }
+    }
 
     this.updateComponents();
 
     this.refreshDates();
 
-    this.hours = [];
-    for (let i = 0; i < 12; i++) {
-      if (i === 0) {
-        this.hours.push(new ChronoString(12));
-      } else {
-        this.hours.push(new ChronoString(i));
-      }
-    }
+    this.refreshMeridiems();
 
-    this.meridiems = [new ChronoString('AM'), new ChronoString('PM')];
+    this.refreshHours();
   }
 
   private updateComponents() {
@@ -55,10 +55,44 @@ export class NgxChronoSelectOverlayComponent implements OnDestroy {
   refreshDates() {
     this.dates = [];
     for (let i = 0; i < 31; i++) {
-      this.dates.push(
-        new ChronoDate(this.selectedMoment.clone().add(i - 15, 'days'), this.dateFormat)
-      );
+      let date = this.selectedMoment.clone().add(i - 15, 'days');
+      if(!this.minMoment || date >= this.minMoment) {
+        this.dates.push(
+          new ChronoDate(date, this.dateFormat)
+        );
+      }
     }
+  }
+
+  refreshHours() {
+    this.hours = [];
+    let isMinDay = this.minMoment && this.selectedMoment.isSame(this.minMoment, 'date');
+    let isMinMeridiem = this.minMoment && !(this.selectedMoment.format(this.meridiemFormat) === 'PM' && this.minMoment.format(this.meridiemFormat) === 'AM')
+    let minHour: number;
+    if(isMinDay && isMinMeridiem) {
+      minHour = this.minMoment.hour() % 12;
+    }
+    for (let i = 0; i < 12; i++) {
+      if(minHour && i < minHour) {
+        continue;
+      }
+      if (i === 0) {
+        this.hours.push(new ChronoString(12));
+      } else {
+        this.hours.push(new ChronoString(i));
+      }
+    }
+  }
+
+  refreshMeridiems() {
+    this.meridiems = [];
+
+    let isMinDay = this.minMoment && this.selectedMoment.isSame(this.minMoment, 'date');
+
+    if(!(isMinDay && this.minMoment.format(this.meridiemFormat) === 'PM')) {
+      this.meridiems.push(new ChronoString('AM'));
+    }
+    this.meridiems.push(new ChronoString('PM'));
   }
 
   onSelectDate(newDate) {
@@ -67,6 +101,8 @@ export class NgxChronoSelectOverlayComponent implements OnDestroy {
     this.selectedMoment.date(newDate.date);
     this.updateComponents();
     this.refreshDates();
+    this.refreshMeridiems();
+    this.refreshHours();
   }
 
   onSelectHour(newHour) {
@@ -89,6 +125,7 @@ export class NgxChronoSelectOverlayComponent implements OnDestroy {
       }
     }
     this.updateComponents();
+    this.refreshHours();
   }
 
   onDoneClick() {

@@ -6,4 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  minDate = new Date();
+
+  onSelect(date) {
+    console.log('date changed', date);
+  }
 }

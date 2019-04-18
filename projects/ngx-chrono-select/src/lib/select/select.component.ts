@@ -1,4 +1,4 @@
-import { Component, Injector, Output, EventEmitter, forwardRef } from '@angular/core';
+import { Component, Injector, Output, EventEmitter, forwardRef, Input } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import { Overlay, OverlayConfig, OverlayRef } from '@angular/cdk/overlay';
 import { ComponentPortal, PortalInjector } from '@angular/cdk/portal';
@@ -20,6 +20,8 @@ import { Subscription } from 'rxjs';
 })
 export class NgxChronoSelectComponent implements ControlValueAccessor {
   @Output() select = new EventEmitter<Date>();
+  
+  @Input() min: Date;
 
   selectedDate = new Date();
 
@@ -48,6 +50,7 @@ export class NgxChronoSelectComponent implements ControlValueAccessor {
 
     const chronoSelectOverlayRef = new NgxChronoSelectOverlayRef(overlayRef);
     chronoSelectOverlayRef.initialDate = initialDate || this.selectedDate;
+    chronoSelectOverlayRef.minDate = this.min;
 
     const injector = this.createInjector(overlayRef, chronoSelectOverlayRef);
 
@@ -63,7 +66,7 @@ export class NgxChronoSelectComponent implements ControlValueAccessor {
       this.afterCloseSubscription.unsubscribe();
     }
 
-    this.afterCloseSubscription = chronoSelectOverlayRef.afterClose.subscribe(selectedDate => {
+    this.afterCloseSubscription = chronoSelectOverlayRef.afterClose.subscribe((selectedDate: Date) => {
       if (this.cvaOnChangeFn && selectedDate !== this.selectedDate) {
         this.cvaOnChangeFn(selectedDate);
       }

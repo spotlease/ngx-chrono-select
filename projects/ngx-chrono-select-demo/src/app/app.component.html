@@ -17,3 +17,9 @@
   <button [ngxChronoSelectTrigger]="chronoSelect3">Select Date</button>
   <ngx-chrono-select #chronoSelect3 name="chronoSelect3Value" ngModel #chronoSelect3NgModel="ngModel"></ngx-chrono-select>
 </div>
+
+<div class="example">
+  <div>{{chronoSelect4NgModel.value}}</div>
+  <button [ngxChronoSelectTrigger]="chronoSelect4">Select Date</button>
+  <ngx-chrono-select (select)="onSelect($event)" [min]="minDate" #chronoSelect4 name="chronoSelect4Value" ngModel #chronoSelect4NgModel="ngModel"></ngx-chrono-select>
+</div>
