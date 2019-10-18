@@ -2,7 +2,7 @@
   cursor: pointer;
   overflow: hidden;
   position: relative;
-  height: 160px;
+  height: 140px;
 }
 
 .shadow {
@@ -16,7 +16,7 @@
 }
 
 .list {
-  padding: 20px;
+  padding: 10px 20px;
 }
 
 .item {
@@ -29,4 +29,50 @@
 
 .selected {
   font-weight: bold;
+}
+
+$arrow-size: 24px;
+
+.up-arrow, .down-arrow {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: $arrow-size * 2;
+  height: $arrow-size;
+  padding: 0;
+  background: none;
+  border: none;
+  color: transparent;
+  position: relative;
+  cursor: pointer;
+  opacity: 0.75;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.up-arrow:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 $arrow-size $arrow-size $arrow-size;
+  border-color: transparent transparent #000 transparent;
+}
+
+.down-arrow:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: $arrow-size $arrow-size 0 $arrow-size;
+  border-color: #000 transparent transparent transparent;
 }

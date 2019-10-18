@@ -72,16 +72,20 @@ export class NgxChronoSelectDrumComponent implements OnInit, AfterViewChecked {
       return item.equals(this.selectedItemValue);
     });
     if (index >= 0) {
-      this.selectedIndex = index;
-      this.movingPanYOffset = this.stablePanYOffset = index * -this.itemHeight;
+      this.setSelectedIndex(index);
     }
+  }
+
+  private setSelectedIndex(index: number) {
+    this.selectedIndex = index;
+    this.movingPanYOffset = this.stablePanYOffset = index * -this.itemHeight;
   }
 
   ngOnInit() {}
 
   ngAfterViewChecked() {
     this.minPanYOffset = 0;
-    this.maxPanYOffset = -(this.list.nativeElement.clientHeight - this.itemHeight * 4);
+    this.maxPanYOffset = -(this.list.nativeElement.clientHeight - this.itemHeight * 3);
   }
 
   onPanStart(event) {
@@ -105,10 +109,16 @@ export class NgxChronoSelectDrumComponent implements OnInit, AfterViewChecked {
 
   onChange() {
     const index = Math.round(-this.stablePanYOffset / this.itemHeight);
-    this.movingPanYOffset = this.stablePanYOffset = index * -this.itemHeight;
-
-    this.selectedIndex = index;
+    this.setSelectedIndex(index);
     this.selectedItemValue = this.items[index];
     this.select.emit(this.selectedItemValue);
+  }
+
+  increment() {
+    this.setSelectedIndex(Math.min(this.selectedIndex + 1, this.itemsValue.length - 1));
+  }
+
+  decrement() {
+    this.setSelectedIndex(Math.max(this.selectedIndex - 1, 0));
   }
 }

@@ -113,8 +113,6 @@ export class NgxChronoSelectOverlayComponent implements OnDestroy {
 
     let isMaxDay = this.maxMoment && this.selectedMoment.isSame(this.maxMoment, 'date');
 
-    this.meridiems.push(new ChronoString('AM'));
-
     if(!(isMaxDay && this.maxMoment.format(this.meridiemFormat) === 'AM')) {
       this.meridiems.push(new ChronoString('PM'));
     }

@@ -1,3 +1,4 @@
+<button class="up-arrow" (click)="decrement()">Up</button>
 <div class="wrapper" (panstart)="onPanStart($event)" (panend)="onPanEnd($event)" (panmove)="onPanMove($event)" #wrapper>
   <div class="shadow"></div>
   <div class="list" [style.transform]="getTransform()" #list>
@@ -6,3 +7,4 @@
     <div class="item"></div>
   </div>
 </div>
+<button class="down-arrow" (click)="increment()">Down</button>
