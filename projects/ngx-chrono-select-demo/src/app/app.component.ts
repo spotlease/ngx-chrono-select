@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import * as moment from 'moment';
+import * as moment_ from 'moment';
+
+const moment = moment_;
 
 @Component({
   selector: 'app-root',

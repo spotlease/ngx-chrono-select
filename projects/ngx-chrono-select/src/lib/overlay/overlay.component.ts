@@ -91,6 +91,9 @@ export class NgxChronoSelectOverlayComponent implements OnDestroy {
     }
 
     for (let i = 0; i < 12; i++) {
+      if(minHour && i < minHour) {
+        continue;
+      }
       if(maxHour && i > maxHour) {
         continue;
       }
