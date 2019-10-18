@@ -22,6 +22,7 @@ export class NgxChronoSelectComponent implements ControlValueAccessor {
   @Output() select = new EventEmitter<Date>();
   
   @Input() min: Date;
+  @Input() max: Date;
 
   selectedDate = new Date();
 
@@ -51,6 +52,7 @@ export class NgxChronoSelectComponent implements ControlValueAccessor {
     const chronoSelectOverlayRef = new NgxChronoSelectOverlayRef(overlayRef);
     chronoSelectOverlayRef.initialDate = initialDate || this.selectedDate;
     chronoSelectOverlayRef.minDate = this.min;
+    chronoSelectOverlayRef.maxDate = this.max;
 
     const injector = this.createInjector(overlayRef, chronoSelectOverlayRef);
 

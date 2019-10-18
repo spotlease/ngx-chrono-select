@@ -8,6 +8,7 @@ export class NgxChronoSelectOverlayRef {
   initialDate = new Date();
 
   minDate: Date;
+  maxDate: Date;
 
   constructor(private overlayRef: OverlayRef) {
     this.afterClose = new EventEmitter();

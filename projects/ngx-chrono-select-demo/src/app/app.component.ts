@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-root',
@@ -6,7 +7,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  minDate = new Date();
+  minDate = moment().add(24, 'hours').toDate();
+  maxDate = moment().add(48, 'hours').toDate();
 
   onSelect(date) {
     console.log('date changed', date);

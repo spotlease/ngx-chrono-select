@@ -18,6 +18,7 @@ export class NgxChronoSelectOverlayComponent implements OnDestroy {
   meridiemFormat = 'A';
 
   minMoment: Moment;
+  maxMoment: Moment;
   selectedMoment: Moment;
 
   selectedDate: ChronoDate;
@@ -34,6 +35,12 @@ export class NgxChronoSelectOverlayComponent implements OnDestroy {
       this.minMoment = moment(chronoSelectOverlayRef.minDate);
       if(this.minMoment > this.selectedMoment) {
         this.selectedMoment = this.minMoment.clone();
+      }
+    }
+    if(chronoSelectOverlayRef.maxDate) {
+      this.maxMoment = moment(chronoSelectOverlayRef.maxDate);
+      if(this.maxMoment < this.selectedMoment) {
+        this.selectedMoment = this.maxMoment.clone();
       }
     }
 
@@ -56,7 +63,9 @@ export class NgxChronoSelectOverlayComponent implements OnDestroy {
     this.dates = [];
     for (let i = 0; i < 31; i++) {
       let date = this.selectedMoment.clone().add(i - 15, 'days');
-      if(!this.minMoment || date >= this.minMoment) {
+      let testMin = !this.minMoment || date >= this.minMoment;
+      let testMax = !this.maxMoment || date <= this.maxMoment;
+      if(testMin && testMax) {
         this.dates.push(
           new ChronoDate(date, this.dateFormat)
         );
@@ -66,14 +75,23 @@ export class NgxChronoSelectOverlayComponent implements OnDestroy {
 
   refreshHours() {
     this.hours = [];
+
     let isMinDay = this.minMoment && this.selectedMoment.isSame(this.minMoment, 'date');
     let isMinMeridiem = this.minMoment && !(this.selectedMoment.format(this.meridiemFormat) === 'PM' && this.minMoment.format(this.meridiemFormat) === 'AM')
     let minHour: number;
     if(isMinDay && isMinMeridiem) {
       minHour = this.minMoment.hour() % 12;
     }
+
+    let isMaxDay = this.maxMoment && this.selectedMoment.isSame(this.maxMoment, 'date');
+    let isMaxMeridiem = this.maxMoment && !(this.selectedMoment.format(this.meridiemFormat) === 'AM' && this.maxMoment.format(this.meridiemFormat) === 'PM')
+    let maxHour: number;
+    if(isMaxDay && isMaxMeridiem) {
+      maxHour = this.maxMoment.hour() % 12;
+    }
+
     for (let i = 0; i < 12; i++) {
-      if(minHour && i < minHour) {
+      if(maxHour && i > maxHour) {
         continue;
       }
       if (i === 0) {
@@ -92,7 +110,15 @@ export class NgxChronoSelectOverlayComponent implements OnDestroy {
     if(!(isMinDay && this.minMoment.format(this.meridiemFormat) === 'PM')) {
       this.meridiems.push(new ChronoString('AM'));
     }
-    this.meridiems.push(new ChronoString('PM'));
+
+    let isMaxDay = this.maxMoment && this.selectedMoment.isSame(this.maxMoment, 'date');
+
+    this.meridiems.push(new ChronoString('AM'));
+
+    if(!(isMaxDay && this.maxMoment.format(this.meridiemFormat) === 'AM')) {
+      this.meridiems.push(new ChronoString('PM'));
+    }
+
   }
 
   onSelectDate(newDate) {
