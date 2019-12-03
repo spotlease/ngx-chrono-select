@@ -21,6 +21,7 @@ import { Subscription } from 'rxjs';
 export class NgxChronoSelectComponent implements ControlValueAccessor {
   @Output() select = new EventEmitter<Date>();
   
+  @Input() label: string = '';
   @Input() min: Date;
   @Input() max: Date;
 
@@ -35,8 +36,13 @@ export class NgxChronoSelectComponent implements ControlValueAccessor {
   show(initialDate?: Date) {
     const positionStrategy = this.overlay
       .position()
-      .global()
-      .bottom();
+      .global();
+
+    if (window.innerWidth >= 576) {
+      positionStrategy.centerVertically();
+    } else {
+      positionStrategy.bottom();
+    }
 
     const overlayConfig = new OverlayConfig({
       hasBackdrop: true,
@@ -50,6 +56,7 @@ export class NgxChronoSelectComponent implements ControlValueAccessor {
     const overlayRef = this.overlay.create(overlayConfig);
 
     const chronoSelectOverlayRef = new NgxChronoSelectOverlayRef(overlayRef);
+    chronoSelectOverlayRef.label = this.label;
     chronoSelectOverlayRef.initialDate = initialDate || this.selectedDate;
     chronoSelectOverlayRef.minDate = this.min;
     chronoSelectOverlayRef.maxDate = this.max;

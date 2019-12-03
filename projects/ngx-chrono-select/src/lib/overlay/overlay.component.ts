@@ -13,6 +13,8 @@ const moment = moment_;
   styleUrls: ['./overlay.component.scss']
 })
 export class NgxChronoSelectOverlayComponent implements OnDestroy {
+  label: string;
+
   dateFormat = 'ddd MMM D';
   hourFormat = 'h';
   meridiemFormat = 'A';
@@ -30,6 +32,7 @@ export class NgxChronoSelectOverlayComponent implements OnDestroy {
   meridiems: ChronoString[];
 
   constructor(private chronoSelectOverlayRef: NgxChronoSelectOverlayRef) {
+    this.label = chronoSelectOverlayRef.label;
     this.selectedMoment = moment(chronoSelectOverlayRef.initialDate);
     if(chronoSelectOverlayRef.minDate) {
       this.minMoment = moment(chronoSelectOverlayRef.minDate);

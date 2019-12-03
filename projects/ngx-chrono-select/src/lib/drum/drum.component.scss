@@ -31,48 +31,44 @@
   font-weight: bold;
 }
 
-$arrow-size: 24px;
-
 .up-arrow, .down-arrow {
+  color: transparent;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: $arrow-size * 2;
-  height: $arrow-size;
-  padding: 0;
-  background: none;
-  border: none;
-  color: transparent;
-  position: relative;
-  cursor: pointer;
+  width: 64px;
+  height: 64px;
   opacity: 0.75;
   &:hover {
     opacity: 0.9;
   }
+  cursor: pointer;
+  background: none;
+  outline: none;
+  border: none;
+
+  &:after {
+    content: "";
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border-left: 3px solid #000;
+    border-top: 3px solid #000;
+  }
 }
 
-.up-arrow:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 2;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: 0 $arrow-size $arrow-size $arrow-size;
-  border-color: transparent transparent #000 transparent;
+.up-arrow {
+  padding-top: 24px;
+  &:after {
+    transform: rotate(45deg);
+    vertical-align: bottom;
+  }
 }
 
-.down-arrow:before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  z-index: 2;
-  width: 0;
-  height: 0;
-  border-style: solid;
-  border-width: $arrow-size $arrow-size 0 $arrow-size;
-  border-color: #000 transparent transparent transparent;
+.down-arrow {
+  padding-bottom: 24px;
+  &:after {
+    transform: rotate(225deg);
+    vertical-align: top;
+  }
 }

@@ -3,23 +3,23 @@
     Date Time:
     <input [ngxChronoSelect]="chronoSelect1" readonly>
   </label>
-  <ngx-chrono-select #chronoSelect1></ngx-chrono-select>
+  <ngx-chrono-select label="Date Select 1" #chronoSelect1></ngx-chrono-select>
 </div>
 
 <div class="example">
   <div>{{chronoSelect2.selectedDate}}</div>
   <button [ngxChronoSelectTrigger]="chronoSelect2">Select Date</button>
-  <ngx-chrono-select #chronoSelect2></ngx-chrono-select>
+  <ngx-chrono-select label="Date Select 2" #chronoSelect2></ngx-chrono-select>
 </div>
 
 <div class="example">
   <div>{{chronoSelect3NgModel.value}}</div>
   <button [ngxChronoSelectTrigger]="chronoSelect3">Select Date</button>
-  <ngx-chrono-select #chronoSelect3 name="chronoSelect3Value" ngModel #chronoSelect3NgModel="ngModel"></ngx-chrono-select>
+  <ngx-chrono-select label="Date Select 3" #chronoSelect3 name="chronoSelect3Value" ngModel #chronoSelect3NgModel="ngModel"></ngx-chrono-select>
 </div>
 
 <div class="example">
   <div>{{chronoSelect4NgModel.value}}</div>
   <button [ngxChronoSelectTrigger]="chronoSelect4">Select Date</button>
-  <ngx-chrono-select (select)="onSelect($event)" [min]="minDate" [max]="maxDate" #chronoSelect4 name="chronoSelect4Value" ngModel #chronoSelect4NgModel="ngModel"></ngx-chrono-select>
+  <ngx-chrono-select label="Date Select 4" (select)="onSelect($event)" [min]="minDate" [max]="maxDate" #chronoSelect4 name="chronoSelect4Value" ngModel #chronoSelect4NgModel="ngModel"></ngx-chrono-select>
 </div>
