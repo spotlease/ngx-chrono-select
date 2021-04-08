@@ -1855,10 +1855,15 @@ copy-webpack-plugin@4.6.0:
     p-limit "^1.0.0"
     serialize-javascript "^1.4.0"
 
-core-js@^2.2.0, core-js@^2.4.0, core-js@^2.5.4:
+core-js@^2.2.0, core-js@^2.4.0:
   version "2.6.2"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.2.tgz#267988d7268323b349e20b4588211655f0e83944"
   integrity sha512-NdBPF/RVwPW6jr0NCILuyN9RiqLo2b1mddWHkUL+VnvcB7dzlnBJ1bXYntjpTGOgkZiiLWj2JxmOr7eGE3qK6g==
+
+core-js@^3.10.1:
+  version "3.10.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.10.1.tgz#e683963978b6806dcc6c0a4a8bd4ab0bdaf3f21a"
+  integrity sha512-pwCxEXnj27XG47mu7SXAwhLP3L5CrlvCB91ANUkIz40P27kUcvNfSdvyZJ9CLHiVoKSp+TTChMQMSKQEH/IQxA==
 
 core-util-is@1.0.2, core-util-is@~1.0.0:
   version "1.0.2"
